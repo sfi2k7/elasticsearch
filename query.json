@@ -1,0 +1,23 @@
+POST idx0825/org/_search
+{
+    "query":{
+        "filtered":{
+            "filter":{
+                    "term":{
+                        "serving_locations.zip":"78211"
+                    }
+            },
+            "query":{
+                "bool":{
+                    "must":[
+                        {
+                            "term":{
+                                "types":307
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
