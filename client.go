@@ -92,7 +92,7 @@ func (es *Client) StatusCode(url string) (int, error) {
 
 func (es *Client) Search(statement *Statement, indexPath string) ([]byte, error) {
 	body := statement.Compile()
-	fmt.Println(string(body))
+	//fmt.Println(string(body))
 	return es.PostCall(indexPath+"/_search", body)
 }
 
