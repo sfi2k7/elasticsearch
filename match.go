@@ -12,3 +12,7 @@ func (mq *MatchQuery) Source() interface{} {
 	ma["match"] = m
 	return ma
 }
+
+func NewMatchQuery(fieldName string, value interface{}) *MatchQuery {
+	return &MatchQuery{Field: fieldName, Value: value}
+}
