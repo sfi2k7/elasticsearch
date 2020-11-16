@@ -13,7 +13,10 @@ type Client struct {
 
 func (es *Client) PostCall(url string, body []byte) ([]byte, error) {
 	rdr := bytes.NewReader(body)
-	req, _ := http.NewRequest("POST", es.url+url, rdr)
+	req, err := http.NewRequest("POST", es.url+url, rdr)
+	if err != nil {
+		return nil, err
+	}
 	//cn.Println("Posting to ", es.url+url)
 	req.Header.Set("content-type", "application/json")
 	c := http.Client{}
@@ -92,7 +95,7 @@ func (es *Client) StatusCode(url string) (int, error) {
 
 func (es *Client) Search(statement *Statement, indexPath string) ([]byte, error) {
 	body := statement.Compile()
-	//fmt.Println(string(body))
+	// fmt.Println("Statement", string(body))
 	return es.PostCall(indexPath+"/_search", body)
 }
 

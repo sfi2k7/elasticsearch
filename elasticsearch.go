@@ -8,7 +8,7 @@ func NewStatement() *Statement {
 	return &Statement{}
 }
 
-func MathAllStatement() *Statement {
+func MatchAllStatement() *Statement {
 	s := NewStatement()
 	m := NewMatchAllQuery()
 	s.AddQuery(m)
